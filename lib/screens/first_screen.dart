@@ -2,46 +2,47 @@ import 'package:flutter/material.dart';
 import 'package:screen_login/screens/second_screen.dart';
 
 class FirstScreen extends StatelessWidget {
-  final tarefaController = TextEditingController();
+  final emailController = TextEditingController();
+  final senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
+      body: ListView(
         // Para ficar melhor a visualização
-        mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
+
+        padding: EdgeInsets.symmetric(horizontal: 20),
         children: [
+          SizedBox(height: 100),
+
           // Vermelho atras da imagem
           Container(
-            margin: EdgeInsets.all(20),
             color: Colors.red,
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              // Imagem
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Image.asset(
-                  "assets/imagem assc.jpg",
-                  fit: BoxFit.cover,
-                ),
+            padding: const EdgeInsets.all(8),
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Image.asset(
+                "assets/imagem assc.jpg",
+                fit: BoxFit.cover,
               ),
             ),
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 40),
 
           // Campo de Texto Email
           // Qual a diferença entre TextField e TextFormField?
           // Metodo ?
-          createTextField(text: "Email"),
+          createTextField(hintText: "Email", controlador: emailController),
 
           SizedBox(height: 15),
 
           // Campo de Texto Email
           // Qual a diferença entre TextField e TextFormField?
           // Metodo ?
-          createTextField(text: "Senha"),
+          createTextField(hintText: "Senha", controlador: senhaController),
 
           SizedBox(height: 20),
 
@@ -56,6 +57,7 @@ class FirstScreen extends StatelessWidget {
             },
             child: Container(
               alignment: Alignment.center,
+              margin: EdgeInsets.symmetric(horizontal: 30),
               height: 50,
               width: 300,
               decoration: BoxDecoration(
@@ -73,24 +75,26 @@ class FirstScreen extends StatelessWidget {
           ),
 
           SizedBox(height: 20),
+
           // Texto e entrar com outras contas
           Text(
             "Ou entre com",
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
           ),
 
           SizedBox(height: 20),
 
           // Tres Bolinhas
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              
-              
               createBalls(cor: Colors.blue),
               createBalls(cor: Colors.purple),
               createBalls(cor: Colors.red),
-              
             ],
           ),
         ],
@@ -106,35 +110,33 @@ class FirstScreen extends StatelessWidget {
     );
   }
 
-  // criacao de campo de texto
-  Padding createTextField({String text}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextFormField(
-        controller: tarefaController,
-        decoration: InputDecoration(
-          hintText: text,
-          hintStyle: TextStyle(
-            color: Colors.white,
-          ),
-          focusedBorder: borderDecoration(),
-          enabledBorder: borderDecoration(),
+  /// criacao de campo de texto
+  Widget createTextField({String hintText, TextEditingController controlador}) {
+    return TextFormField(
+      controller: controlador,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: TextStyle(
+          color: Colors.white,
         ),
+        focusedBorder: borderDecoration(),
+        enabledBorder: borderDecoration(),
       ),
     );
   }
 
-// Nececidade desse metodo ?
-  Padding createBalls({Color cor}) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Container(
-        height: 50,
-        width: 50,
-        decoration: BoxDecoration(
-          color: cor,
-          borderRadius: BorderRadius.circular(25),
-        ),
+  /// Cria um circulo
+  Widget createBalls({Color cor = Colors.pink}) {
+    return Container(
+      height: 50,
+      width: 50,
+      decoration: BoxDecoration(
+        color: cor,
+        // borderRadius: BorderRadius.circular(25),
+        shape: BoxShape.circle,
       ),
     );
   }
