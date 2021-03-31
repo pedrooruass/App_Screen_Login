@@ -48,7 +48,6 @@ flutter:
   assets:
       - assets/imagem assc.jpg
       - assets/parabens.gif
-      - assets/palmas.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
