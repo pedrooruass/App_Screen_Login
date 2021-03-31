@@ -106,9 +106,9 @@ class FirstScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                createBalls(cor: Colors.blue, icone: Icons.home),
+                createBalls(cor: Colors.blue, icone: Icons.store),
                 createBalls(cor: Colors.purple, icone: Icons.android),
-                createBalls(cor: Colors.red, icone: Icons.person_outlined),
+                createBalls(cor: Colors.red, icone: Icons.person),
               ],
             ),
           ],
@@ -117,7 +117,7 @@ class FirstScreen extends StatelessWidget {
     );
   }
 
-// Decoracao campo de texto
+  /// Decoracao campo de texto
   OutlineInputBorder borderDecoration() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(40),
@@ -135,7 +135,7 @@ class FirstScreen extends StatelessWidget {
       obscureText: obscureText,
       validator: (valorDigitado) {
         if (valorDigitado.isEmpty) {
-          return "Por Favor digite um valor";
+          return "Por favor digite um valor";
         } else {
           return null;
         }
